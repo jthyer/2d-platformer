@@ -5,14 +5,15 @@ local player = {}
 local SPEED = 2
 local JUMP = 6
 local GRAVITY = 0.2
-local MAXFALL = 8
+local FALL = 8
 
 player.x, player.y = 100, 100
 player.draw_x, player.draw_y = 100, 100
 player.hspeed = 0
 player.vspeed = 0
 player.color = { .5, 1, .5 }
-player.vaccel = 0
+player.jump = 0
+player.maxfall = FALL
 
 function player.load(w, e)
   -- player needs access to wall and enemy functions
@@ -29,16 +30,28 @@ function player.update()
     player.hspeed = 0
   end
   
+  -- check if jump key pressed or released, gravity
   if wall.checkCollisionFloor(player.x,player.y+1) then
-    if love.keyboard.isDown("up") then
+    if player.jump == 0 and love.keyboard.isDown("up") then
       player.vspeed = -JUMP
+      player.jump = 1
     end
-  else
+  else  
+    player.maxfall = FALL / 2
+    if not love.keyboard.isDown("up") then 
+      if player.vspeed < 0 then
+        player.vspeed = 0
+      end
+      player.maxfall = FALL
+      player.jump = 0
+    end
     player.vspeed = player.vspeed + GRAVITY
-    if player.vspeed > MAXFALL then
-      player.vspeed = MAXFALL
+    if player.vspeed > player.maxfall then
+      player.vspeed = player.maxfall
     end
   end
+  
+  
 
   local new_x = player.x + player.hspeed
   local new_y = player.y + player.vspeed
