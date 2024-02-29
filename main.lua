@@ -1,7 +1,8 @@
 local level = require("src.level")
-
 local tickPeriod = 1/60
 local accumulator = 0.0
+
+require("src.util")
 
 function love.load()
   love.graphics.setDefaultFilter("linear", "linear", 1)

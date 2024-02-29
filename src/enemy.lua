@@ -15,10 +15,10 @@ function enemy.createEnemy(id, x, y)
   return e
 end
 
-function enemy.update(e)
-  for i,v in ipairs(enemyTable) do
-    --v.x = v.x + 1;
-  end
+function enemy.update()
+  -- for i,v in ipairs(enemyTable) do
+    -- No enemy behavior yet.
+  -- end
 end
 
 function enemy.draw()
