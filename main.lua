@@ -3,6 +3,7 @@ local tickPeriod = 1/60
 local accumulator = 0.0
 
 require("src.util")
+require("src.keyboard")
 
 function love.load()
   love.graphics.setDefaultFilter("linear", "linear", 1)
@@ -17,13 +18,15 @@ function love.update(dt)
   if delta > tickPeriod then delta = tickPeriod end
   accumulator = accumulator + delta
   if accumulator >= tickPeriod then
+    kb.update()
     level.update(delta)
     accumulator = accumulator - tickPeriod
-  end 
+  end
 end
 
 function love.draw()
   level.draw()
+  kb.draw()
 end
 
 function love.keypressed(key, scancode)

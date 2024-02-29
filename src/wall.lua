@@ -50,7 +50,11 @@ end
 
 function wall.draw()
   for i,v in ipairs(wallTable) do
-    love.graphics.setColor(1,1,1)
+    if v.y > 224 then 
+      love.graphics.setColor(1,1,1)
+    else 
+      love.graphics.setColor(1,0,0)
+    end
     love.graphics.rectangle("fill",v.x,v.y,32,32)
   end
 end

@@ -2,18 +2,20 @@ local wall = {}
 local enemy = {}
 local player = {}
 
-local SPEED = 2
-local JUMP = 6
+local SPEED = 3
+local JUMP = 7
 local GRAVITY = 0.2
-local FALL = 8
+local FASTFALL = 10
+local SLOWFALL = 5
 
-player.x, player.y = 100, 100
+player.x, player.y = 440, 260
 player.draw_x, player.draw_y = 100, 100
 player.hspeed = 0
 player.vspeed = 0
 player.color = { .5, 1, .5 }
 player.jump = 0
-player.maxfall = FALL
+player.fall = FASTFALL
+player.inAir = false
 
 function player.load(w, e)
   -- player needs access to wall and enemy functions
@@ -21,38 +23,46 @@ function player.load(w, e)
 end
 
 function player.update()
+  if player.y < 193 or player.y > 384 then 
+    player.x = 440
+    player.y = 260
+    player.hspeed = 0
+    player.vspeed = 0
+    love.timer.sleep(.5)
+  end
+  
   -- Check for keyboard input
-  if love.keyboard.isDown("left") then
+  if kb.left() then
     player.hspeed = -SPEED
-  elseif love.keyboard.isDown("right") then
+  elseif kb.right() then
     player.hspeed = SPEED 
   else
     player.hspeed = 0
   end
   
   -- check if jump key pressed or released, gravity
-  if wall.checkCollisionFloor(player.x,player.y+1) then
-    if player.jump == 0 and love.keyboard.isDown("up") then
+  player.inAir = wall.checkCollisionFloor(player.x,player.y+1)
+  
+  if player.inAir then
+    if kb.jumpPressed() then
       player.vspeed = -JUMP
-      player.jump = 1
     end
   else  
-    player.maxfall = FALL / 2
-    if not love.keyboard.isDown("up") then 
-      if player.vspeed < 0 then
-        player.vspeed = 0
+    player.fall = SLOWFALL
+    if not kb.jumpHeld() then 
+      if player.vspeed < -GRAVITY then
+        player.vspeed = player.vspeed + 0.5
       end
-      player.maxfall = FALL
-      player.jump = 0
+      player.fall = FASTFALL
+      player.vspeed = player.vspeed + (GRAVITY / 2)
     end
     player.vspeed = player.vspeed + GRAVITY
-    if player.vspeed > player.maxfall then
-      player.vspeed = player.maxfall
+    if player.vspeed > player.fall then
+      player.vspeed = player.fall
     end
   end
   
-  
-
+  -- update position, check for collision
   local new_x = player.x + player.hspeed
   local new_y = player.y + player.vspeed
   local old_x = player.x 

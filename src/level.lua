@@ -15,9 +15,7 @@ function level.update()
   level.player.update()
 end
 
-function level.draw()
-  love.graphics.printf("level",100,20,500,"left")
-  
+function level.draw()  
   level.wall.draw()
   level.player.draw()
   level.enemy.draw()
