@@ -7,6 +7,8 @@ local JUMP = 7
 local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
+local SMALLBOUNCE = 12
+local BIGBOUNCE = 9
 
 player.x, player.y = 440, 260
 player.draw_x, player.draw_y = 100, 100
@@ -23,12 +25,8 @@ function player.load(w, e)
 end
 
 function player.update()
-  if player.y < 193 or player.y > 384 then 
-    player.x = 440
-    player.y = 260
-    player.hspeed = 0
-    player.vspeed = 0
-    love.timer.sleep(.5)
+  if player.y > 384 then --or player.y < 193 then 
+    player.die()
   end
   
   -- Check for keyboard input
@@ -59,6 +57,14 @@ function player.update()
     player.vspeed = player.vspeed + GRAVITY
     if player.vspeed > player.fall then
       player.vspeed = player.fall
+    end
+  end
+  
+  if enemy.spring.checkCollision(player.x,player.y) then
+    if kb.jumpHeld() then
+      player.vspeed = -BIGBOUNCE
+    else
+      player.vspeed = -SMALLBOUNCE
     end
   end
   
@@ -95,6 +101,14 @@ function player.draw()
     love.graphics.rectangle("fill",player.draw_x,player.draw_y,32,32)
     love.graphics.setColor(1,1,1)
   end
+end
+
+function player.die()
+  player.x = 440
+  player.y = 260
+  player.hspeed = 0
+  player.vspeed = 0
+  love.timer.sleep(.5)
 end
 
 return player
