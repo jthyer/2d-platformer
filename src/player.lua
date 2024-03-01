@@ -7,26 +7,33 @@ local JUMP = 7
 local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
-local SMALLBOUNCE = 12
+local SMALLBOUNCE = 9
 local BIGBOUNCE = 9
 
-player.x, player.y = 440, 260
-player.draw_x, player.draw_y = 100, 100
-player.hspeed = 0
-player.vspeed = 0
-player.color = { .5, 1, .5 }
-player.jump = 0
-player.fall = FASTFALL
-player.inAir = false
-
 function player.load(w, e)
+  player.x, player.y = 32, 288
+  player.draw_x, player.draw_y = 32, 288
+  player.hspeed = 0
+  player.vspeed = 0
+  player.color = { .5, 1, .5 }
+  player.jump = 0
+  player.fall = FASTFALL
+  player.inAir = false
+  
   -- player needs access to wall and enemy functions
   wall, enemy = w, e
 end
 
 function player.update()
-  if player.y > 384 then --or player.y < 193 then 
-    player.die()
+  if player.y > 384 then
+    love.timer.sleep(.5)
+    return false
+  end
+  
+  if player.x > 512 then
+    love.timer.sleep(.5)
+    setCurrentLevel(getCurrentLevel() + 1)
+    return true
   end
   
   -- Check for keyboard input
@@ -68,6 +75,11 @@ function player.update()
     end
   end
   
+  if enemy.spike.checkCollision(player.x,player.y) then
+    love.timer.sleep(.5)
+    return false
+  end
+  
   -- update position, check for collision
   local new_x = player.x + player.hspeed
   local new_y = player.y + player.vspeed
@@ -93,6 +105,8 @@ function player.update()
   
   player.draw_x = round(player.x)
   player.draw_y = round(player.y)
+  
+  return true
 end
 
 function player.draw()
@@ -104,11 +118,10 @@ function player.draw()
 end
 
 function player.die()
-  player.x = 440
-  player.y = 260
+  player.x, player.y = 32, 288 
   player.hspeed = 0
   player.vspeed = 0
-  love.timer.sleep(.5)
+  
 end
 
 return player

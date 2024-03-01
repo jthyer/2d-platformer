@@ -32,7 +32,5 @@ function kb.update()
 end
 
 function kb.draw()
-  if jumpHeld then 
-    love.graphics.printf("Jump held!", 100, 100, 100, "left")
-  end
+
 end
