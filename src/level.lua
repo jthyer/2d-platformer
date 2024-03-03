@@ -6,7 +6,7 @@ level.enemy = require("src.enemy")
 level.player = require("src.player")
 
 function level.load(l)  
-  level.wall.load(level.LEVELDATA.tileData[l])
+  level.wall.load(level.LEVELDATA[l].tileData)
   level.enemy.load(level.LEVELDATA.enemyData[l])
   level.player.load(level.wall, level.enemy)
 end

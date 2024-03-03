@@ -1,6 +1,46 @@
+local json = require("lib.json")
 local levelData = {}
+local NUMLEVELS = 1
 
-levelData.tileData = {
+for level = 1,NUMLEVELS do
+  table.insert(levelData,{})
+  levelData[level].tileData = {}
+  --levelData[level].enemies = {}
+  --levelData[level].gems = {}
+
+  local raw = love.filesystem.read("levels/level"..tostring(level)..".json")
+  local jsonData = json.decode(raw)
+    
+  for i = 1, 12 do
+    local row = {}
+    local str = ""
+    for i2 = 1, 16 do
+      local coord = jsonData["layers"][1]["data"][i2+((i-1)*16)]
+      coord = coord + 1
+      table.insert(row,coord)
+      str = str .. coord
+    end
+    print(str)
+    table.insert(levelData[level].tileData,row)
+  end
+  
+ --[[ for key,v in pairs(jsonData["layers"][1]["entities"]) do
+    local enemy = {}
+      enemy.id = v["name"]
+      enemy.x = v["x"]
+      enemy.y = v["y"]
+    table.insert(levelData[level].enemies,enemy)
+  end
+  for key,v in pairs(jsonData["layers"][2]["entities"]) do
+    local gem = {}
+      gem.x = v["x"]
+      gem.y = v["y"]
+    table.insert(levelData[level].gems,gem)
+  end--]]
+end
+
+
+--[[levelData.tileData = {
   { -- level 1 
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -43,7 +83,7 @@ levelData.tileData = {
         {1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1},
         {1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1}
   } ,
-}
+}--]]
 
 levelData.enemyData = {
   { -- level 1 
