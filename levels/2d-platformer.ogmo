@@ -15,7 +15,7 @@
   "compactExport": false,
   "externalScript": "",
   "playCommand": "",
-  "entityTags": [],
+  "entityTags": ["enemy"],
   "layers": [
     {
       "definition": "tile",
@@ -25,9 +25,56 @@
       "exportMode": 0,
       "arrayMode": 0,
       "defaultTileset": "New Tileset"
+    },
+    {
+      "definition": "entity",
+      "name": "enemy",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "58266552",
+      "requiredTags": ["enemy"],
+      "excludedTags": []
     }
   ],
-  "entities": [],
+  "entities": [
+    {
+      "exportID": "58229461",
+      "name": "jellyfishStill",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["enemy"],
+      "values": [],
+      "texture": "../assets/spr_jellyfishStill.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA6ElEQVRYR2NkwANW3nv9H588sXLhSqKMuNRilaCWxeiWYnMIigNoZTE+h8AdQC/LYY6BhQbYAfS2HNkRjANlOcwRow4YDQGMXADKHucevQCXgEZyEijlBC5xkFpi9SAnepBdWEtCcizC5Qh8ZoH0YDiAkAZyHIdPz/B3AKEQpXkIDD0HkJKl0KtZbL4lOQTIdQCx5QC6o0kqB8jJgvg8hLUcgLmQ1OAk13E4G4vUdAC+UCApCshNH6MOICkEyE1MhFI7LnNJKooJFSrkOH5kOICk9gC5cUluFqVLOUByCODrdpNb6eAyEwD4QIVlrEQTZQAAAABJRU5ErkJgggAA"
+    }
+  ],
   "tilesets": [
     {"label": "New Tileset", "path": "../assets/tileset.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAbSURBVDhPY/i/7iRJaFQDMWhUAzFo0GlYdxIAIZt2H8VAgwsAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
   ]

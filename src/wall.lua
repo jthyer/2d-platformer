@@ -50,8 +50,9 @@ end
 
 function wall.draw()
   for i,v in ipairs(wallTable) do
-    love.graphics.setColor(1,1,1)
+    love.graphics.setColor(.8,.4,.4)
     love.graphics.rectangle("fill",v.x,v.y,32,32)
+    love.graphics.setColor(1,1,1)
   end
 end
 

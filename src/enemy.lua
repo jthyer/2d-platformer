@@ -6,13 +6,13 @@ enemy.spring = {}
 enemy.spike = {}
 
 local COLORTABLE = {}
-COLORTABLE.spring = { .5, .5, 1 }
+COLORTABLE.jellyfishStill = { .5, .5, 1 }
 COLORTABLE.spike = { 1, .2, .2 }
 
 function enemy.load(ENEMYDATA)
   enemyTable = {}
   for i,v in ipairs(ENEMYDATA) do
-    table.insert(enemyTable,enemy.createEnemy(v[1],v[2],v[3]))
+    table.insert(enemyTable,enemy.createEnemy(v.id,v.x*2,v.y*2))
   end
 end
 
@@ -29,7 +29,7 @@ function enemy.spring.checkCollision(x,y)
   local enemyDeathFlag = {}
   
   for i,v in ipairs(enemyTable) do  
-    if(v.id == "spring" and checkCollision(x,y,v.x,v.y)) then
+    if(v.id == "jellyfishStill" and checkCollision(x,y,v.x,v.y)) then
       collision = true
       table.insert(enemyDeathFlag,i)
     end

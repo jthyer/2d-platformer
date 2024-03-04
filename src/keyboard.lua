@@ -20,7 +20,7 @@ function kb.jumpHeld()
 end
 
 function kb.update()
-  if love.keyboard.isDown("up") then
+  if love.keyboard.isDown('z') or love.keyboard.isDown("up") then
     if jumpHeld == false then
       jumpPressed = true
     else
@@ -28,7 +28,7 @@ function kb.update()
     end
   end
   
-  jumpHeld = love.keyboard.isDown("up")
+  jumpHeld = love.keyboard.isDown('z') or love.keyboard.isDown("up")
 end
 
 function kb.draw()

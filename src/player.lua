@@ -19,18 +19,29 @@ function player.load(w, e)
   player.jump = 0
   player.fall = FASTFALL
   player.inAir = false
+  player.sprite = love.graphics.newImage("assets/spr_lilly.png")
+  player.frames = {}
+  player.currentFrame = 1
+  player.spinFrame = 1
+  player.vertState = 0 -- -1 = jump, 0 = ground, 1 = fall
+  player.horState = 1 -- -1 = left, 1 = right
+  
+  table.insert(player.frames, love.graphics.newQuad(0, 0, 32, 32, 96, 32))
+  table.insert(player.frames, love.graphics.newQuad(32, 0, 32, 32, 96, 32))
+  table.insert(player.frames, love.graphics.newQuad(0, 0, 32, 32, 96, 32))
+  table.insert(player.frames, love.graphics.newQuad(64, 0, 32, 32, 96, 32))
   
   -- player needs access to wall and enemy functions
   wall, enemy = w, e
 end
 
 function player.update()
-  if player.y > 384 then
+  if player.y > 480 then
     love.timer.sleep(.5)
     return false
   end
   
-  if player.x > 512 then
+  if player.x > 640 then
     love.timer.sleep(.5)
     setCurrentLevel(getCurrentLevel() + 1)
     return true
@@ -103,25 +114,57 @@ function player.update()
     player.y = round(player.y/16) * 16 
   end
   
+  player.setAnimationState()
+  
   player.draw_x = round(player.x)
   player.draw_y = round(player.y)
   
   return true
 end
 
-function player.draw()
-  if player.x and player.y then
-    love.graphics.setColor(player.color)
-    love.graphics.rectangle("fill",player.draw_x,player.draw_y,32,32)
-    love.graphics.setColor(1,1,1)
+function player.setAnimationState()  
+  if player.vspeed < 0 then 
+    player.vertState = -1
+  elseif player.vspeed > 0 then 
+    player.vertState = 0 
+    player.currentFrame = 1
+  else
+    player.vertState = 1
   end
+  
+  if player.hspeed < 0 then 
+    player.horState = -1
+  elseif player.hspeed > 0 then
+    player.horState = 1
+  else
+    player.currentFrame = 1
+  end
+  
+  if getTick() % 6 == 0 then
+    if player.vspeed < 0 or player.spinFrame > 1 then
+      player.spinFrame = player.spinFrame + 1
+      if player.spinFrame > 4 then
+        player.spinFrame = 1
+      end
+    elseif player.hspeed ~= 0 then
+      player.currentFrame = player.currentFrame + 1
+      if player.currentFrame > 4 then
+        player.currentFrame = 1
+      end
+    end
+  end
+end
+
+function player.draw()
+  love.graphics.draw(player.sprite,player.frames[player.currentFrame],
+    player.draw_x+16,player.draw_y+16,math.rad((player.spinFrame-1)*90),
+    player.horState,1,16,16)
 end
 
 function player.die()
   player.x, player.y = 32, 288 
   player.hspeed = 0
   player.vspeed = 0
-  
 end
 
 return player

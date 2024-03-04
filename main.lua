@@ -3,6 +3,7 @@ local tickPeriod = 1/60
 local accumulator = 0.0
 local currentLevel = 1
 local scene = "level"
+local tick = 0
 
 require("src.util")
 require("src.keyboard")
@@ -21,8 +22,9 @@ function love.update(dt)
     --if delta > tickPeriod then delta = tickPeriod end
     accumulator = accumulator + delta
     if accumulator >= tickPeriod then
+      tick = tick + 1
       kb.update()
-      level.update(delta)
+      level.update()
       accumulator = accumulator - tickPeriod
     end
   end
@@ -54,4 +56,8 @@ function setCurrentLevel(i)
   else
     scene = "win"
   end
+end
+
+function getTick()
+  return tick
 end
