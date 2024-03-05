@@ -21,6 +21,7 @@ function player.load(w, e)
   player.inAir = false
   player.sprite = love.graphics.newImage("assets/spr_lilly.png")
   player.frames = {}
+  player.jumpRelease = false
   player.currentFrame = 1
   player.spinFrame = 1
   player.vertState = 0 -- -1 = jump, 0 = ground, 1 = fall
@@ -66,10 +67,13 @@ function player.update()
   if player.inAir then
     if kb.jumpPressed() then
       player.vspeed = -JUMP
+      player.jumpRelease = false
     end
   else  
     player.fall = SLOWFALL
-    if not kb.jumpHeld() then 
+    if (not kb.jumpHeld()) or 
+      (player.jumpRelease and player.vspeed < 0) then
+      player.jumpRelease = true
       if player.vspeed < -GRAVITY then
         player.vspeed = player.vspeed + 0.5
       end
