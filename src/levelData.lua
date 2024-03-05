@@ -4,21 +4,24 @@ local NUMLEVELS = 1
 
 for level = 1,NUMLEVELS do
   table.insert(levelData,{})
-  levelData[level].tileData = {}
+  levelData[level].wallData = {}
   levelData[level].enemyData = {}
-  --levelData[level].gems = {}
-
+  levelData[level].tileData = {}
+  
   local raw = love.filesystem.read("levels/level"..tostring(level)..".json")
   local jsonData = json.decode(raw)
     
   for i = 1, 30 do
-    local row = {}
+    local rowWall = {}
+    local rowTile = {}
     for i2 = 1, 40 do
-      local coord = jsonData["layers"][1]["data"][i2+((i-1)*40)]
-      coord = coord + 1
-      table.insert(row,coord)
+      local wallCoord = jsonData["layers"][1]["data"][i2+((i-1)*40)]+1
+      local tileCoord = jsonData["layers"][3]["data"][i2+((i-1)*40)]
+      table.insert(rowWall,wallCoord)
+      table.insert(rowTile,tileCoord)
     end
-    table.insert(levelData[level].tileData,row)
+    table.insert(levelData[level].wallData,rowWall)
+    table.insert(levelData[level].tileData,rowTile)
   end
   
   for key,v in pairs(jsonData["layers"][2]["entities"]) do
@@ -28,93 +31,7 @@ for level = 1,NUMLEVELS do
       enemy.y = v["y"]
     table.insert(levelData[level].enemyData,enemy)
   end
-  --[[for key,v in pairs(jsonData["layers"][2]["entities"]) do
-    local gem = {}
-      gem.x = v["x"]
-      gem.y = v["y"]
-    table.insert(levelData[level].gems,gem)
-  end--]]
+
 end
 
-
---[[levelData.tileData = {
-  { -- level 1 
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-        {0,0,0,0,0,1,1,1,1,0,0,1,0,0,0,0},
-        {0,0,0,0,0,1,1,1,1,0,0,1,0,0,0,0},
-        {1,1,1,0,0,1,1,1,1,0,0,1,0,0,1,1},
-        {1,1,1,0,0,1,1,1,1,0,0,1,0,0,1,1}
-  } ,
-  { -- level 2 
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},      
-        {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,1,1,0,0,0,1,1,1,0,0,0,0,0,1,1},
-        {1,1,1,0,0,0,1,1,1,0,0,0,0,0,1,1}
-  } ,
-  { -- level 3
-        {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1},     
-        {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1},
-        {0,0,0,0,0,1,0,0,0,1,1,1,1,1,1,1},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1},
-        {1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1}
-  } ,
-}--]]
-
---[[levelData.enemyData = {
-  { -- level 1 
-    { "spike", 32*5, 32*7 } ,
-    { "spike", 32*8, 32*7 } ,
-    { "spike", 32*11, 32*6 } ,
-  } ,
-  { -- level 2
-    { "spike",  0+128, 160 } ,
-    { "spike",  32+128, 160 } ,
-    { "spike",  64+128, 160 } ,
-    { "spike",  96+128, 160 } ,
-    { "spike",  128+128, 160 } ,
-    { "spike",  160+128, 160 } ,
-    { "spike",  192+128, 160 } ,
-    { "spike",  192+32+128, 160 } ,
-    { "spike",  192+64+128, 160 } ,
-    { "spike",  192+96+128, 160 } ,
-    { "spike",  192+128+128, 160 } ,
-    { "spike",  192+160+128, 160 } ,
-  } ,
-  { -- level 3
-    { "spring", 96, 320} ,
-    { "spike", 32*5, 32*4 },
-    { "spring", 32*7, 320} ,    
-    { "spring", 32*11, 320} ,  
-    { "spike",  192-32+128, 192 } ,
-    { "spike",  192+128, 192 } ,
-    { "spike",  192+32+128, 192 } ,
-    { "spike",  192+64+128, 192 } ,
-    { "spike",  192+96+128, 192 } ,
-    { "spike",  192+128+128, 192 } ,
-    { "spike",  192+160+128, 192 } ,
-  } ,
-}
-]]--
 return levelData

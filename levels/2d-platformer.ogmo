@@ -24,7 +24,7 @@
       "exportID": "42552001",
       "exportMode": 0,
       "arrayMode": 0,
-      "defaultTileset": "New Tileset"
+      "defaultTileset": "wall"
     },
     {
       "definition": "entity",
@@ -33,6 +33,15 @@
       "exportID": "58266552",
       "requiredTags": ["enemy"],
       "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "tiles",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "67082388",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "tiles"
     }
   ],
   "entities": [
@@ -76,6 +85,7 @@
     }
   ],
   "tilesets": [
-    {"label": "New Tileset", "path": "../assets/tileset.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAbSURBVDhPY/i/7iRJaFQDMWhUAzFo0GlYdxIAIZt2H8VAgwsAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+    {"label": "wall", "path": "../assets/bg_wall.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAbSURBVDhPY/i/7iRJaFQDMWhUAzFo0GlYdxIAIZt2H8VAgwsAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "tiles", "path": "../assets/bg_tiles.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAABi0lEQVRoQ+2Z3RGDIAyAcRxXsL46RmfxnKB72BF8dQefOou9eE2P8wjRBC1QefEnEOAzJBGKqqpmk3jp+95M02TKslyuUPB+HMflua5rA/d4HYZheV8AgKZpRAhQibS9qFOrEfYfBACQgdK2raEmtK5jA0AZp0M6aZf+6AAAvK7rvBA1ANb6gwJAZTBAygLWdbKyAMmXsQHYcHwQJf1AG5f+oBYgGVhWTvACICBwWcAnmcgiDxAYwNcxbQHA5Qmc3DW+oE5QmwhxAEG/L0/g5FkAwEm4ss2fW4A2EeIsgMsTOPnhFsBNwDeALT5Aop9rE8wHcB1x8qQBPF6zaj/geb+R/w4cOK0cLAB+hTWlyAEAboIACHtTZMvzaQA4L8/JKR+EmyEojxrAEXlAUgCOyAOS8QFcnOfk1BKAHagta51aGqf5AI2nptoCtAvAv1tAMj7gqCUQTRSQxPE9UKhzgagA/OJcICoAvji/52u76vosQKM7WBiUxPE9A6fOBa4wGEMY3PMlQ9fVWsAbMNGACvSFk2kAAAAASUVORK5CYIIA", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
   ]
 }

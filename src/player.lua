@@ -7,11 +7,11 @@ local JUMP = 7
 local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
-local SMALLBOUNCE = 9
-local BIGBOUNCE = 9
+local SMALLBOUNCE = 10
+local BIGBOUNCE = 7
 
 function player.load(w, e)
-  player.x, player.y, player.width, player.height = 32, 288, 32, 32
+  player.x, player.y, player.width, player.height = 200, 288, 32, 32
   player.draw_x, player.draw_y = 32, 288
   player.hspeed = 0
   player.vspeed = 0
@@ -90,6 +90,7 @@ function player.update()
     player.width,player.height) then
     if kb.jumpHeld() then
       player.vspeed = -BIGBOUNCE
+      player.jumpRelease = false
     else
       player.vspeed = -SMALLBOUNCE
     end

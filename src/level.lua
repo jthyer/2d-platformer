@@ -1,12 +1,14 @@
 local level = {}
 
-level.LEVELDATA = require("src.levelData")
+level.LEVELDATA = require("src.levelData") 
+level.bg = require("src.bg")
 level.wall = require("src.wall")
 level.enemy = require("src.enemy")
 level.player = require("src.player")
 
 function level.load(l)  
-  level.wall.load(level.LEVELDATA[l].tileData)
+  level.bg.load(level.LEVELDATA[l].tileData)
+  level.wall.load(level.LEVELDATA[l].wallData)
   level.enemy.load(level.LEVELDATA[l].enemyData)
   level.player.load(level.wall, level.enemy)
 end
@@ -16,12 +18,9 @@ function level.update()
   then level.load(getCurrentLevel()) end
 end
 
-function level.draw()  
-  love.graphics.setColor(.9,.8,1)
-  love.graphics.rectangle("fill",0,0,640,480)
-  love.graphics.setColor(1,1,1)
-  
-  level.wall.draw()
+function level.draw()    
+  level.bg.draw()  
+  --level.wall.draw()
   level.player.draw()
   level.enemy.draw()
 end
