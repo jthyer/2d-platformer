@@ -24,12 +24,12 @@ function enemy.createEnemy(id, x, y)
   return e
 end
 
-function enemy.spring.checkCollision(x,y)
+function enemy.spring.checkCollision(x,y,w,h)
   local collision = false
   local enemyDeathFlag = {}
   
   for i,v in ipairs(enemyTable) do  
-    if(v.id == "jellyfishStill" and checkCollision(x,y,v.x,v.y)) then
+    if(v.id == "jellyfishStill" and checkCollision(x,y,w,h,v.x,v.y,32,16)) then
       collision = true
       table.insert(enemyDeathFlag,i)
     end
@@ -42,11 +42,11 @@ function enemy.spring.checkCollision(x,y)
   return collision
 end
 
-function enemy.spike.checkCollision(x,y)
+function enemy.spike.checkCollision(x,y,w,h)
   local collision = false
 
   for i,v in ipairs(enemyTable) do  
-    if(v.id == "spike" and checkCollision(x,y,v.x,v.y)) then
+    if(v.id == "spike" and checkCollision(x,y,v.x,v.y,32,32)) then
       collision = true
     end
   end

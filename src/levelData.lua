@@ -11,10 +11,10 @@ for level = 1,NUMLEVELS do
   local raw = love.filesystem.read("levels/level"..tostring(level)..".json")
   local jsonData = json.decode(raw)
     
-  for i = 1, 15 do
+  for i = 1, 30 do
     local row = {}
-    for i2 = 1, 20 do
-      local coord = jsonData["layers"][1]["data"][i2+((i-1)*20)]
+    for i2 = 1, 40 do
+      local coord = jsonData["layers"][1]["data"][i2+((i-1)*40)]
       coord = coord + 1
       table.insert(row,coord)
     end
