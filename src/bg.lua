@@ -26,7 +26,10 @@ function bg.load(TILEDATA)
 end
 
 function bg.drawCanvas(tileData)
+  love.graphics.setColor(0,0,0)
+  love.graphics.rectangle("fill",0,0,640,480)
   love.graphics.setColor(1,1,1)
+  
   for i,v in ipairs(tileData) do
     for j,v2 in ipairs(v) do
       if v2 ~= -1 then

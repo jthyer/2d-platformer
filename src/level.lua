@@ -18,7 +18,7 @@ function level.update()
   then level.load(getCurrentLevel()) end
 end
 
-function level.draw()    
+function level.draw()  
   level.bg.draw()  
   --level.wall.draw()
   level.player.draw()
