@@ -16,16 +16,18 @@ function level.load(l)
 end
 
 function level.update()
+  level.bg.update()
+  
   if not level.player.update()
   then level.load(getCurrentLevel()) end
 end
 
 function level.draw()  
   level.bg.draw()  
-  level.wall.draw()
+  --level.wall.draw()
   level.spike.draw()
   level.player.draw()
-  level.enemy.draw()
+  --level.enemy.draw()
 end
 
 return level

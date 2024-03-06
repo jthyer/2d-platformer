@@ -24,8 +24,8 @@ for level = 1,NUMLEVELS do
       if spikeCoord > 0 then
         local spikeUnit = {}
         spikeUnit.id = spikeCoord
-        spikeUnit.x = i2*16
-        spikeUnit.y = i*16
+        spikeUnit.x = (i2-1)*16
+        spikeUnit.y = (i-1)*16
         table.insert(levelData[level].spikeData,spikeUnit)
       end
     end

@@ -13,7 +13,7 @@ local SMALLBOUNCE = 10
 local BIGBOUNCE = 7
 
 function player.load(w, e)
-  player.x, player.y, player.width, player.height = 200, 288, 32, 32
+  player.x, player.y, player.width, player.height = 100, 288, 32, 32
   player.draw_x, player.draw_y = 32, 288
   player.hspeed = 0
   player.vspeed = 0
