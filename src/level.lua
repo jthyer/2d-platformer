@@ -5,10 +5,12 @@ level.bg = require("src.bg")
 level.wall = require("src.wall")
 level.enemy = require("src.enemy")
 level.player = require("src.player")
+level.spike = require("src.spike")
 
 function level.load(l)  
   level.bg.load(level.LEVELDATA[l].tileData)
   level.wall.load(level.LEVELDATA[l].wallData)
+  level.spike.load(level.LEVELDATA[l].spikeData)
   level.enemy.load(level.LEVELDATA[l].enemyData)
   level.player.load(level.wall, level.enemy)
 end
@@ -20,7 +22,8 @@ end
 
 function level.draw()  
   level.bg.draw()  
-  --level.wall.draw()
+  level.wall.draw()
+  level.spike.draw()
   level.player.draw()
   level.enemy.draw()
 end

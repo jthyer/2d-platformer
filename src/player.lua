@@ -2,6 +2,8 @@ local wall = {}
 local enemy = {}
 local player = {}
 
+player.sprite = love.graphics.newImage("assets/spr_lilly.png")
+
 local SPEED = 3
 local JUMP = 7
 local GRAVITY = 0.2
@@ -19,7 +21,6 @@ function player.load(w, e)
   player.jump = 0
   player.fall = FASTFALL
   player.inAir = false
-  player.sprite = love.graphics.newImage("assets/spr_lilly.png")
   player.frames = {}
   player.jumpRelease = false
   player.currentFrame = 1

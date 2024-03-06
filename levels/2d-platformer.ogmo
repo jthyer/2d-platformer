@@ -42,6 +42,15 @@
       "exportMode": 0,
       "arrayMode": 0,
       "defaultTileset": "tiles"
+    },
+    {
+      "definition": "tile",
+      "name": "spikes",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "76029682",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "spikes"
     }
   ],
   "entities": [
@@ -86,6 +95,7 @@
   ],
   "tilesets": [
     {"label": "wall", "path": "../assets/bg_wall.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAbSURBVDhPY/i/7iRJaFQDMWhUAzFo0GlYdxIAIZt2H8VAgwsAAAAASUVORK5CYII=", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
-    {"label": "tiles", "path": "../assets/bg_tiles.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAABi0lEQVRoQ+2Z3RGDIAyAcRxXsL46RmfxnKB72BF8dQefOou9eE2P8wjRBC1QefEnEOAzJBGKqqpmk3jp+95M02TKslyuUPB+HMflua5rA/d4HYZheV8AgKZpRAhQibS9qFOrEfYfBACQgdK2raEmtK5jA0AZp0M6aZf+6AAAvK7rvBA1ANb6gwJAZTBAygLWdbKyAMmXsQHYcHwQJf1AG5f+oBYgGVhWTvACICBwWcAnmcgiDxAYwNcxbQHA5Qmc3DW+oE5QmwhxAEG/L0/g5FkAwEm4ss2fW4A2EeIsgMsTOPnhFsBNwDeALT5Aop9rE8wHcB1x8qQBPF6zaj/geb+R/w4cOK0cLAB+hTWlyAEAboIACHtTZMvzaQA4L8/JKR+EmyEojxrAEXlAUgCOyAOS8QFcnOfk1BKAHagta51aGqf5AI2nptoCtAvAv1tAMj7gqCUQTRSQxPE9UKhzgagA/OJcICoAvji/52u76vosQKM7WBiUxPE9A6fOBa4wGEMY3PMlQ9fVWsAbMNGACvSFk2kAAAAASUVORK5CYIIA", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+    {"label": "tiles", "path": "../assets/bg_tiles.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABqklEQVRoQ+1YwY2EMAyEcpCogONLGVsLggauDyiBLyUg8doffeydIwVlUYKJHTagdT6AHDseT2yHpEVRvJIbjxQAVFVFgjAMg9Kj6pMWNZRg/RVAWZZKVNe106HtHBOAlmE2qE7b7AcHAOCbptkNAgfA1v4bAB3NvS2xnXMpBiiRMQGY4M7IC5v9Nwa4ACj6XB0BcKkySqHzqwBgfQKT2wIctA9gDIKDe30Ck18CgHbC1u3ZDHAbGcYA1icwOcoA5oDLwBlN66gvaw4cVXDNi3oa/X2+WP8D/eMn7nFaABxkAKsymNyZxJ9iAKvzmPwSAE7pA59iAKvzmDw6A9xSLQBcEZQ+wNhb6igRKokpddzHd+e9UEgAUe6FQgLYq/M+0bbNPZ0BSh33AeW8FwrFgI8zoeYGS+JQDlHspMuysP4H2ralrLvqTNOUdF2XzPOcZFmmnjD0+ziO6htyAN71U28pBUArmYp6BdOoTd73fQJO6JHnudc36AmA2zPA2cTRc+A/GVQSY3vdJYfuC8N375vzWTkgAGIzIH1A+oA0spufhaSMxi6jd2fgD8RkTN2y4xxiAAAAAElFTkSuQmCC", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "spikes", "path": "../assets/bg_spikes.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAACm53kpAAABTklEQVRYR82W2w2DMAxFyx6swwiswBh8MAYrMAKDsAB7tDKSkWNSX4KdqnwhHMW+B7+a14+fYRje2uU4juenbdvO92VZjndkl/fN89yUSEoOc3DfLkH2nGMtWIqh89M0QYEWgNx9JUDCASDBGlI0gNz9FpAQAFK0/iMoHWsDsIBQpp8ASAQFTzVItafLwLJLAH3fI82Jveu6hu8mA/cAGYNlX9f10lOsALiv0JkwANKhLgEEpDYAKZhFy3hDMsAijoBEA0CCdazVAWiHGgiloacEcveV1OABwBNAiTP2levKT3vQ3wNAY7Ft2+QnlDbhfd+TJkhTpXgPiMwAJFhnTDSAR3uAF4BnD6gNAO4BUrycw/R+ZxfnJsaO0NjTAdEU4G9o1c7Z3XtABADvHlATABqLyQh6mgHePSASABJ82QOiMwCNRe/YurNXoBik/QOM9X0v/3j1+wAAAABJRU5ErkJgggAA", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
   ]
 }

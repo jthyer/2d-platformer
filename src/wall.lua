@@ -1,9 +1,9 @@
 local wall = {}
 local wallTable = {}
 
-function wall.load(TILEDATA)
+function wall.load(WALLDATA)
   wallTable = {}
-  for i,v in ipairs(TILEDATA) do
+  for i,v in ipairs(WALLDATA) do
     for j,v2 in ipairs(v) do
       if v2 == 1 then
         local wall = {}
