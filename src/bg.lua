@@ -48,12 +48,13 @@ function bg.drawCanvas(tileData)
 end
 
 function bg.draw()
-  love.graphics.setColor(.5,.5,.8)
+  love.graphics.setColor(.35,.2,.2)
+ -- love.graphics.setColor(0,0,0)
   love.graphics.rectangle("fill",0,0,640,480)
   love.graphics.setColor(1,1,1,0.2)
-  love.graphics.draw(bg_fog,fog_x,0)
-  love.graphics.draw(bg_fog,fog_x+512,0) 
-  love.graphics.draw(bg_fog,fog_x+1024,0)
+  --love.graphics.draw(bg_fog,fog_x,0)
+  --love.graphics.draw(bg_fog,fog_x+512,0) 
+  --love.graphics.draw(bg_fog,fog_x+1024,0)
   love.graphics.setColor(1,1,1,1)
   
   love.graphics.draw(canvas,0,0,0,1,1)
