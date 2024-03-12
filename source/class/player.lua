@@ -4,12 +4,14 @@ local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
 
-local function player(c,start_x,start_y,checkObjects)  
+local function player(c,start_x,start_y,p)  
   local public = {}
   
+  local image = { sprite = global.getAsset("sprite","lillyWalkR"), index = 1, timer = 0 }
+
   local class, x, y = c, start_x, start_y
-  local sprite = global.getAsset("sprite","lillyR")
   local hspeed, vspeed = 0, 0
+  local dir = "R"
   local jumpRelease = false
   local maxFallSpeed = FASTFALL
   
@@ -32,9 +34,9 @@ local function player(c,start_x,start_y,checkObjects)
       
       return collision 
     end
-    return checkObjects(f)
+    return p.checkObjects(f)
   end
-  
+    
   local function horMovement()
     if kb.left() then
       hspeed = -SPEED
@@ -101,15 +103,38 @@ local function player(c,start_x,start_y,checkObjects)
     hitbox.y = y+16
   end
   
+  local function updateSprite()
+    local vertState, horState
+    local spr 
+    
+    if hspeed < 0 then 
+      dir = "L"
+    elseif hspeed > 0 then 
+      dir = "R"
+    end
+    
+    if vspeed < 0 then 
+      spr = "lillyJump"
+    elseif vspeed > 0 then 
+      spr = "lillyFall"
+    elseif hspeed ~= 0 then
+      spr = "lillyWalk"
+    else
+      spr = "lilly"
+    end
+    
+    p.changeSprite(image,spr..dir)
+  end
+  
   function public.update() 
     horMovement()
     vertMovement()
     updateHitbox()
+    updateSprite()
+    p.updateFrame(image)
   end
   
-  function public.drawInfo() return x, y, sprite end
-  function public.get_y() return y end
-  function public.getSprite() return sprite end
+  function public.drawInfo() return x, y, image.sprite, image.index end
 
   return public
 end

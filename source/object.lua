@@ -5,12 +5,15 @@ local objectDeathFlag = {}
 local itrID
 
 local new = {}
-new.jellyfishStill = require("source.class.jellyfish")
-new.jellyfishMove = require("source.class.jellyfish")
+new.jellyfish = require("source.class.player")--require("source.class.jellyfish")
+  new.jellyfishStill = new.jellyfish
+  new.jellyfishMove = new.jellyfish
 new.wall = require("source.class.wall")
 new.player = require("source.class.player")
 
-local function checkObjects(f)
+local p = {} -- parent functions to pass to child closures as needed
+
+function p.checkObjects(f)
   -- perform a passed function on all objects 
   -- immediately return true if any f(obj) returns true
   for i,obj in ipairs(objectTable) do
@@ -19,6 +22,31 @@ local function checkObjects(f)
     end
   end
   return false
+end
+
+function p.updateFrame(image) 
+  if image.spriteCount == 1 then
+    return
+  end
+  
+  image.timer = image.timer + 1
+  if image.timer == image.sprite.frameSpeed then 
+    image.index = image.index + 1
+    image.timer = 0
+    if image.index > image.sprite.frameCount then
+      image.index = 1
+    end
+  end
+end
+
+function p.changeSprite(image,str)
+  if image.sprite.index == str then 
+    return
+  end  
+  
+  image.sprite = global.getAsset("sprite",str)
+  image.index = 1
+  image.timer = 0
 end
 
 local function getID()
@@ -30,7 +58,7 @@ end
 
 local function newObject(c,x,y)
   local obj = {}
-  obj = new[c](c,x,y,checkObjects)
+  obj = new[c](c,x,y,p)
   return obj
 end
 
@@ -52,9 +80,9 @@ end
 
 function object.draw()
   for i,obj in ipairs(objectTable) do
-    if obj.getSprite ~= nil then
-      local x, y, sprite = obj.drawInfo()
-      love.graphics.draw(sprite,x,y)
+    if obj.drawInfo ~= nil then
+      local x, y, sprite, imageIndex = obj.drawInfo()
+      love.graphics.draw(sprite.image,sprite.frame[imageIndex],x,y)
     end
   end
 end

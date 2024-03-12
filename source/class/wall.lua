@@ -11,8 +11,6 @@ local function wall(c,start_x,start_y)
   
   public.solid = true
   function public.hitbox() return hitbox end
-  function public.getSolidWidth() return 16 end
-  function public.getSolidHeight() return 16 end
   
   return public
 end

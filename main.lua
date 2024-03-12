@@ -6,7 +6,7 @@ global.TILE_DIMENSION = 16
 kb = require("source.kb")
 util = require("source.util")
 
-local asset = require("source.asset")
+asset = require("source.asset")
 local scene = require("source.scene")
 
 local tickPeriod = 1/60
