@@ -7,14 +7,10 @@ asset.tileset.wall = love.graphics.newImage("image/tile_wall.png")
 
 asset.sprite = {}
 
-asset.sprite.lillyR =     { index = "lillyR",     image = love.graphics.newImage("image/spr_lillyR.png"),     frameCount = 1, frameSpeed = 0 }
-asset.sprite.lillyWalkR = { index = "lillyWalkR", image = love.graphics.newImage("image/spr_lillyWalkR.png"), frameCount = 4, frameSpeed = 6 }
-asset.sprite.lillyJumpR = { index = "lillyJumpR", image = love.graphics.newImage("image/spr_lillyJumpR.png"), frameCount = 4, frameSpeed = 6 }
-asset.sprite.lillyFallR = { index = "lillyFallR", image = love.graphics.newImage("image/spr_lillyFallR.png"), frameCount = 1, frameSpeed = 0 }
-asset.sprite.lillyL =     { index = "lillyL",     image = love.graphics.newImage("image/spr_lillyL.png"),     frameCount = 1, frameSpeed = 0 }
-asset.sprite.lillyWalkL = { index = "lillyWalkL", image = love.graphics.newImage("image/spr_lillyWalkL.png"), frameCount = 4, frameSpeed = 6 }
-asset.sprite.lillyJumpL = { index = "lillyJumpL", image = love.graphics.newImage("image/spr_lillyJumpL.png"), frameCount = 4, frameSpeed = 6 }
-asset.sprite.lillyFallL = { index = "lillyFallL", image = love.graphics.newImage("image/spr_lillyFallL.png"), frameCount = 1, frameSpeed = 0 }
+asset.sprite.lilly =     { index = "lilly",     image = love.graphics.newImage("image/spr_lilly.png"),     frameCount = 1, frameSpeed = 0 }
+asset.sprite.lillyWalk = { index = "lillyWalk", image = love.graphics.newImage("image/spr_lillyWalk.png"), frameCount = 4, frameSpeed = 6 }
+asset.sprite.lillyJump = { index = "lillyJump", image = love.graphics.newImage("image/spr_lillyJump.png"), frameCount = 4, frameSpeed = 6 }
+asset.sprite.lillyFall = { index = "lillyFall", image = love.graphics.newImage("image/spr_lillyFall.png"), frameCount = 1, frameSpeed = 0 }
 
 asset.sprite.jellyfishBoss = { image = love.graphics.newImage("image/spr_jellyfishBoss.png"), frameCount = 1, frameSpeed = 0 }
 asset.sprite.jellyfishMove = { image = love.graphics.newImage("image/spr_jellyfishMove.png"), frameCount = 1, frameSpeed = 0 }

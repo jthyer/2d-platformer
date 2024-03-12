@@ -35,7 +35,8 @@ function private.setCanvas(BGDATA)
   love.graphics.setCanvas(canvas)
   
   -- background color
-  love.graphics.setColor(.35,.25,.25)
+  --love.graphics.setColor(.35,.25,.25)
+  love.graphics.setColor(.8,1,1)
   love.graphics.rectangle("fill",0,0,
     global.WINDOW_WIDTH,global.WINDOW_HEIGHT)
   love.graphics.setColor(1,1,1)

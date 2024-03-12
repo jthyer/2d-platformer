@@ -81,8 +81,8 @@ end
 function object.draw()
   for i,obj in ipairs(objectTable) do
     if obj.drawInfo ~= nil then
-      local x, y, sprite, imageIndex = obj.drawInfo()
-      love.graphics.draw(sprite.image,sprite.frame[imageIndex],x,y)
+      local x, y, sprite, imageIndex, dir, o = obj.drawInfo()
+      love.graphics.draw(sprite.image,sprite.frame[imageIndex],x+o,y+o,0,dir,1,o,o)
     end
   end
 end

@@ -3,15 +3,15 @@ local JUMP = 7
 local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
+local ORIGIN_OFFSET = 16
 
 local function player(c,start_x,start_y,p)  
   local public = {}
   
-  local image = { sprite = global.getAsset("sprite","lillyWalkR"), index = 1, timer = 0 }
+  local image = { sprite = global.getAsset("sprite","lillyWalk"), index = 1, timer = 0, dir = 1 }
 
   local class, x, y = c, start_x, start_y
   local hspeed, vspeed = 0, 0
-  local dir = "R"
   local jumpRelease = false
   local maxFallSpeed = FASTFALL
   
@@ -108,9 +108,9 @@ local function player(c,start_x,start_y,p)
     local spr 
     
     if hspeed < 0 then 
-      dir = "L"
+      image.dir = -1
     elseif hspeed > 0 then 
-      dir = "R"
+      image.dir = 1
     end
     
     if vspeed < 0 then 
@@ -123,7 +123,7 @@ local function player(c,start_x,start_y,p)
       spr = "lilly"
     end
     
-    p.changeSprite(image,spr..dir)
+    p.changeSprite(image,spr)
   end
   
   function public.update() 
@@ -134,7 +134,8 @@ local function player(c,start_x,start_y,p)
     p.updateFrame(image)
   end
   
-  function public.drawInfo() return x, y, image.sprite, image.index end
+  function public.drawInfo() return x, y, 
+    image.sprite, image.index, image.dir, ORIGIN_OFFSET end
 
   return public
 end
