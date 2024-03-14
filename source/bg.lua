@@ -36,7 +36,7 @@ function private.setCanvas(BGDATA)
   
   -- background color
   --love.graphics.setColor(.35,.25,.25)
-  love.graphics.setColor(.8,1,1)
+  love.graphics.setColor(.7,1,1)
   love.graphics.rectangle("fill",0,0,
     global.WINDOW_WIDTH,global.WINDOW_HEIGHT)
   love.graphics.setColor(1,1,1)
@@ -45,7 +45,7 @@ function private.setCanvas(BGDATA)
   for i,v in ipairs(BGDATA) do
     for j,v2 in ipairs(v) do
       if v2 ~= -1 then
-        love.graphics.draw(tileset,quads[v2+1],(j-1)*dim,(i-1)*dim)
+        --love.graphics.draw(tileset,quads[v2+1],(j-1)*dim,(i-1)*dim)
       end
     end
   end 

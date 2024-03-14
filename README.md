@@ -20,4 +20,4 @@ Misc. To-Do:
 - Implement remaining jellyfish and bullets.
 - Very simple title screen, move between three stages, very simple ending. Do the title in-engine, like Game Maker.
 - Can still clip into corners. Do looping collision check to make sure player doesn't get stuck?
-- Am I feeling ambitous? Let's set up some moving pass-through platforms.
+- Draw a pretty sunet background.

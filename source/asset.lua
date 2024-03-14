@@ -9,7 +9,7 @@ asset.sprite = {}
 
 asset.sprite.lilly =     { index = "lilly",     image = love.graphics.newImage("image/spr_lilly.png"),     frameCount = 1, frameSpeed = 0 }
 asset.sprite.lillyWalk = { index = "lillyWalk", image = love.graphics.newImage("image/spr_lillyWalk.png"), frameCount = 4, frameSpeed = 6 }
-asset.sprite.lillyJump = { index = "lillyJump", image = love.graphics.newImage("image/spr_lillyJump.png"), frameCount = 4, frameSpeed = 6 }
+asset.sprite.lillyJump = { index = "lillyJump", image = love.graphics.newImage("image/spr_lillyJump.png"), frameCount = 4, frameSpeed = 3 }
 asset.sprite.lillyFall = { index = "lillyFall", image = love.graphics.newImage("image/spr_lillyFall.png"), frameCount = 1, frameSpeed = 0 }
 
 asset.sprite.jellyfishBoss = { image = love.graphics.newImage("image/spr_jellyfishBoss.png"), frameCount = 1, frameSpeed = 0 }

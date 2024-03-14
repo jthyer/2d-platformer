@@ -5,7 +5,7 @@ local objectDeathFlag = {}
 local itrID
 
 local new = {}
-new.jellyfish = require("source.class.player")--require("source.class.jellyfish")
+new.jellyfish = require("source.class.jellyfish")--require("source.class.jellyfish")
   new.jellyfishStill = new.jellyfish
   new.jellyfishMove = new.jellyfish
 new.wall = require("source.class.wall")
@@ -83,6 +83,11 @@ function object.draw()
     if obj.drawInfo ~= nil then
       local x, y, sprite, imageIndex, dir, o = obj.drawInfo()
       love.graphics.draw(sprite.image,sprite.frame[imageIndex],x+o,y+o,0,dir,1,o,o)
+    else
+      love.graphics.setColor(.35,.25,.25)
+      local x, y, width, height = obj.hitbox().x, obj.hitbox().y, obj.hitbox().width, obj.hitbox().height
+      love.graphics.rectangle("fill",x,y,width,height)
+      love.graphics.setColor(1,1,1)
     end
   end
 end

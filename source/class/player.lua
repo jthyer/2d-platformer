@@ -1,6 +1,6 @@
 local SPEED = 3
-local JUMP = 7
-local GRAVITY = 0.2
+local JUMP = 6
+local GRAVITY = 0.2--0.2
 local FASTFALL = 10
 local SLOWFALL = 5
 local ORIGIN_OFFSET = 16
@@ -14,6 +14,7 @@ local function player(c,start_x,start_y,p)
   local hspeed, vspeed = 0, 0
   local jumpRelease = false
   local maxFallSpeed = FASTFALL
+  local grounded = true
   
   local hitbox = {}
   hitbox = {x=x+8,y=y+16,width=16,height=16}
@@ -56,7 +57,7 @@ local function player(c,start_x,start_y,p)
   end
   
   local function vertMovement()
-    local grounded = checkCollisionWalls(hitbox.x,hitbox.y+1,
+    grounded = checkCollisionWalls(hitbox.x,hitbox.y+1,
       hitbox.width,hitbox.height,true)
   
     if grounded then
@@ -113,10 +114,14 @@ local function player(c,start_x,start_y,p)
       image.dir = 1
     end
     
-    if vspeed < 0 then 
-      spr = "lillyJump"
-    elseif vspeed > 0 then 
-      spr = "lillyFall"
+    if not grounded then 
+      if kb.jumpHeld() and not jumpRelease and vspeed > -5 then
+        spr = "lillyJump"
+      else
+        spr = "lillyFall"
+      end
+        --elseif vspeed > 0 then 
+    --  spr = "lillyFall"
     elseif hspeed ~= 0 then
       spr = "lillyWalk"
     else
