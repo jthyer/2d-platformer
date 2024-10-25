@@ -4,12 +4,7 @@ local objectTable = {}
 local objectDeathFlag = {}
 local itrID
 
-local new = {}
-new.jellyfish = require("source.class.jellyfish")--require("source.class.jellyfish")
-  new.jellyfishStill = new.jellyfish
-  new.jellyfishMove = new.jellyfish
-new.wall = require("source.class.wall")
-new.player = require("source.class.player")
+local new = require("source.class._define")
 
 local p = {} -- parent functions to pass to child closures as needed
 
@@ -21,7 +16,28 @@ function p.checkObjects(f)
       return true
     end
   end
-  return false
+  return nil
+end
+
+function p.checkCollision(check_x,check_y,checkWidth,checkHeight,
+  solidOnly,enemyOnly,floorOnly,ceilOnly)
+
+  local function f(obj) 
+    local collision = false
+    if (solidOnly and obj.solid) or (enemyOnly and obj.enemy) then
+      local x, y, w, h = obj.hitbox().x, obj.hitbox().y,
+        obj.hitbox().width, obj.hitbox().height
+      if (floorOnly == nil or check_y <= y) and
+        (ceilOnly == nil or check_y > y) and
+        util.checkOverlap(check_x,check_y,checkWidth,checkHeight,x,y,w,h) then
+        collision = true
+      end
+    end
+      
+    return collision 
+  end 
+  
+  return p.checkObjects(f)
 end
 
 function p.updateFrame(image) 

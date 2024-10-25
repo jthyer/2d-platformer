@@ -41,9 +41,9 @@ end
 
 function kb.draw()
   -- for debug purposes only
-  -- if jumpHeld then
-    --love.graphics.printf("Jump held!", 32, 32,300,"left")
-  -- end
+  if jumpHeld then
+    love.graphics.printf("Jump held!", 32, 32,300,"left")
+  end
 end
 
 return kb

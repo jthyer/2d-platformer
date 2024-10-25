@@ -9,8 +9,8 @@ local function wall(c,start_x,start_y)
     height = 16,
   }
   
-  public.solid = true
   function public.hitbox() return hitbox end
+  public.solid = true
   
   return public
 end

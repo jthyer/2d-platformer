@@ -6,18 +6,20 @@ global.TILE_DIMENSION = 16
 kb = require("source.kb")
 util = require("source.util")
 
-asset = require("source.asset")
+local asset = require("source.asset")
 local scene = require("source.scene")
 
 local tickPeriod = 1/60
 local accumulator = 0.0
 
+local sceneNumber = 1
+
 function love.load()
   love.graphics.setDefaultFilter("linear", "linear", 1)
-  love.window.setTitle("Template Project")
+  love.window.setTitle("2D Platformer")
   love.window.setVSync( 1 )  
 
-  scene.load(1)
+  scene.load(sceneNumber)
 end
 
 function love.update(dt)
@@ -33,6 +35,10 @@ end
 function love.draw()
   scene.draw()
   kb.draw()
+end
+
+function global.sceneRestart()
+  scene.load(sceneNumber)
 end
 
 function global.getAsset(assetType,index)
