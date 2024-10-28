@@ -1,6 +1,6 @@
 local SPEED = 3
 local JUMP = 6
-local GRAVITY = 0.2--0.2
+local GRAVITY = 0.2
 local FASTFALL = 10
 local SLOWFALL = 5
 local ORIGIN_OFFSET = 16
@@ -120,15 +120,15 @@ local function player(c,start_x,start_y,p)
   end
   
   local function enemyCollision()
-    if(p.checkCollision(hitbox.x,hitbox.y,
-      hitbox.width,hitbox.height,nil,true,true,nil,true)) then
+    if(p.checkCollision(hitbox.x-8,hitbox.y,
+      hitbox.width+16,hitbox.height,nil,nil,true,nil,true)) then
       vspeed = -JUMP-1
       y = y + vspeed
       jumpTimer = TIME_TO_RELEASE
       if kb.jumpHeld() then
         jumpRelease = false
       end
-    elseif(p.checkCollision(hitbox.x,hitbox.y,
+    elseif(y > global.WINDOW_HEIGHT or p.checkCollision(hitbox.x,hitbox.y,
       hitbox.width,hitbox.height,nil,true)) then
       global.sceneRestart()
     end

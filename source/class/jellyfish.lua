@@ -10,15 +10,16 @@ local function jellyfish(c,start_x,start_y,p)
   local hitbox = {}
   hitbox = {x=x+8,y=y+8,width=16,height=16}
   
-  function updateHitbox()
+  local function updateHitbox()
     hitbox.x = x+8
     hitbox.y = y+8
   end
   
   function public.update() 
     if class == "jellyfishMove" then
-      if p.checkCollision(hitbox.x,hitbox.y,
-        hitbox.width,hitbox.height,true) then
+      if (x < 0) or (x+(ORIGIN_OFFSET*2) > global.WINDOW_WIDTH) or
+        (p.checkCollision(hitbox.x,hitbox.y,
+        hitbox.width,hitbox.height,true)) then
         hspeed = hspeed * -1
       end
       x = x + hspeed
@@ -30,6 +31,7 @@ local function jellyfish(c,start_x,start_y,p)
     image.sprite, image.index, image.dir, ORIGIN_OFFSET end
   
   public.enemy = true
+  public.bounce = true
   function public.hitbox() return hitbox end
  
   return public

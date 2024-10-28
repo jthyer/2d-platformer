@@ -1,5 +1,5 @@
 {
-  "name": "Template-Project",
+  "name": "2d-platformer",
   "ogmoVersion": "3.4.0",
   "levelPaths": ["."],
   "backgroundColor": "#282c34ff",
@@ -81,7 +81,7 @@
       "tags": ["object"],
       "values": [],
       "texture": "../image/spr_jellyfishStill.png",
-      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA6ElEQVRYR2NkwANW3nv9H588sXLhSqKMuNRilaCWxeiWYnMIigNoZTE+h8AdQC/LYY6BhQbYAfS2HNkRjANlOcwRow4YDQGMXADKHucevQCXgEZyEijlBC5xkFpi9SAnepBdWEtCcizC5Qh8ZoH0YDiAkAZyHIdPz/B3AKEQpXkIDD0HkJKl0KtZbL4lOQTIdQCx5QC6o0kqB8jJgvg8hLUcgLmQ1OAk13E4G4vUdAC+UCApCshNH6MOICkEyE1MhFI7LnNJKooJFSrkOH5kOICk9gC5cUluFqVLOUByCODrdpNb6eAyEwD4QIVlrEQTZQAAAABJRU5ErkJgggAA"
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABB0lEQVRYR+2W0Q0CIQyGZTZ3IY5govHBaOIIhl2cTVOSEuRKWxrQOz0fKdCvpf9/ug3z894/ubg2FkJwtb1kABNv91dtDnbf43aIcQrkDaB34pKKAkkAkLxXxVLbAAS7EQE+mRzhEMJ9I3kOsQLMqwMwGKUSUDq1dXjPljP5Xrg7qQCNAoZydzzHOblfTkkutXVUkfZM7q4gxYkTWhLVILi7UAkTJ6Qqwc0WOAnitwGk6qGzQzuwPIBWSeVfPara5g5YASzeQcqwNwB3XxXAYioWf+gKIFXKAQ61Yo2DrgBDnbD5CSTjsE67eghHJJAUon6CUXBqFfwPAL4Z/kktv3jUOndGir0AQROtNIxBSccAAAAASUVORK5CYIIA"
     },
     {
       "exportID": "82774222",
@@ -119,7 +119,7 @@
       "tags": ["object"],
       "values": [],
       "texture": "../image/spr_jellyfishMove.png",
-      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA10lEQVRYR+2X3Q2AIAyE7Rou4Aju4aDu4Qgu4BoYSCSIbYUL/gYfQbmPo1eVGuUy42S0+dQ5GnqS7mUnSgnHohzIDuAqYQ3EA9wlvsFsbjiAu8VDCHpK3ENUgOpAnAIbDzMvrgNS1+77hDDu1kh8JnTcavGdEBCSICQwn4K4S509oM2nuhBqHhz4HcDZhi534HsAOZFKKeBsB1AAJAGu13CfSshiSDxFAKSpvBpAO9asI0DrowJkOYAWkyZSAR53QDvWYjFEI1oMAC1e8beZe0egu5TWsuMrZMKFedGkNksAAAAASUVORK5CYIIA"
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACwklEQVRYR71XyXLbMAy1nI/r8ht1ROeaTI7Ndut40msr1f2Ppv9WK1hICiQBkvahmvFY5gI8PDyA9LCpPOM4Lsn0CX5teWSAzyJ+x7FNOThPMy5XH3UiOJ4+fqnhi0hOANPjKtcDHvf3N43PcwkkAaA6hhX/wMGVCAxpMUMSEJChuA4Quj8lkDg/unGZPqwRZ0S2mRAr5F4NLAIJbBAAjNykm5Jd84/ko0teVmVGIAsghh04//UJIi+cLGB2sHN7DifBsQgGh26AiaEavY8tCowMrXHiG35MATZAIguDAwZ+RrUHOtmJpQOT6hPs33I66PERkx1vjL/YDwEYd5D/z3a5kTO1AmoZX3VRI4EBCAHiAIkxEwsaWUW6og/GcwHvwQ7Cy8fdG9gXlUYA0AgKESmajzMDunsi2/vXp83kmwePP1PWHYzLpiL3yDltXHZXtFFUTdiE3e3me58jBGs5C8HkoKVMYpqsSMKCwMJpWbrBkcg9oxqIohXj4gHb5uEBaD4W81ZEiSNkzh9AraC6HeQ0X4MOjuJw+Y8pYIFaQqQO50Xaij60CqEBB0p/ZAcHoBGqQtZxNEgpagv0bADkOIpmgCgfY7m1jMV5qJ49aADLt7WnYCDNcz+A1NEq3osAuNFB2fg0dKp5hD0xda/PwNq03jNEY2uWYVrvqdjozLivC5DFqQOQ4pS6Mu+Eeb3LVixbtA467SG1Nm62YjouDy9JJdRy2jWH1fMtra4KALvWtTKlm1VouVkJ18BdDqDzROTK2i3T7QtdUHIhZo3Gqxlq2WUnoSxRFpSWZy/SSxngcvoK5rcF0vws6L0ThOb2Aw85pYUnDCR5zCnG/w23VhkCxXdAseKgBdw+DUUTahlJRHbGPqMV69Fc6qTVjpUq4FbMl5L1xCMlR5r7BXjWjUh2NXzP/83S5VUZDynS9rTm3gH8Ve8087WBwgAAAABJRU5ErkJgggAA"
     },
     {
       "exportID": "83124451",
@@ -158,6 +158,42 @@
       "values": [],
       "texture": "../image/spr_lillyR.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAaNJREFUWIXtlj1ugzAUx/8pvUUmSzkCIwsXsO/AyIjkC1TqZImRseoV8AXSIVPFEbpyDOQOxNQ25sMJTTLkLyG+nv1++L3nB/DUUxuKUqru6lx9valQiJetQeoiDlqJ160BtFwIKeXu3wFOUYqkOwLoV8IUA5QPwhuCa5PJda6f+eYdAVBKFef8YohTlM6CufNaIdDOtxQrGwvA1QBgOhdCTCZNqKqqGq5bAFWVAUY+jEKwpXOf9t+tdT8CCK1jn+bygH2+Wx84hOD8UCWeOK2RHg8AnHOcohSEEABAnueu3SBvGc6tAqVUmYcHAkIIa4zOA19orSqQUu4YoOoiRl3EYOcvcuH0EifdcWRjvtfK8/yyndCdLOmOlnMfUIhzYKEZuc7nbNz3U/ZBALfQ4wFIKXfm9nmN9j8f4QCmzDi6sV66X6vJKmBlM+7pw8r0579qb+A2MfPf4CKAuojBygac9xOxslnqEUoDcT69FbvaLAk1XF3EEEI8RhnONaWbAKzR3QEmk7A9ZAAaEELQgkBn/pL0uPaQgaywn8zqtf/11477BU0l1M12mNXNAAAAAElFTkSuQmCC"
+    },
+    {
+      "exportID": "14808689",
+      "name": "spike",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["object"],
+      "values": []
     }
   ],
   "tilesets": [

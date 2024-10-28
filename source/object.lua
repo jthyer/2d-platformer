@@ -35,7 +35,8 @@ function p.checkCollision(check_x,check_y,checkWidth,checkHeight,
 
   local function f(obj) 
     local collision = false
-    if (solidOnly and obj.solid) or (enemyOnly and obj.enemy) then
+    if (solidOnly and obj.solid) or (enemyOnly and obj.enemy) or
+      (destroy and obj.bounce) then
       local x, y, w, h = obj.hitbox().x, obj.hitbox().y,
         obj.hitbox().width, obj.hitbox().height
       if (floorOnly == nil or check_y <= y) and
