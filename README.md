@@ -13,16 +13,11 @@ Done:
 Player To-Do:
 - Enemies should die when you bounce on them.
 - Player should die when falling in pit.
-
-On the fence:
-- Player still bounces on the ground sometimes. Replace rounding with actual "move to contact" function?
-- Put legs down when fast falling.
-- Spin shouldn't change direction mid-jump.
-- Spin shouldn't change to fall until end of animation.
+- Player still bounces on the ground sometimes. Replace rounding with actual "move to contact" function? Often bounces on one frame jumps.
 
 Misc. To-Do:
 - Spikes. Player should be able to hit spikes and enemies and die.
 - Implement remaining jellyfish and bullets.
-- Very simple title screen, move between three stages, very simple ending. Do the title in-engine, like Game Maker.
+- Very simple title screen, move between stages, very simple ending. Do the title in-engine, like Game Maker.
 - Can still clip into corners. Do looping collision check to make sure player doesn't get stuck?
-- Draw a pretty sunset background.
+- Draw a pretty background.

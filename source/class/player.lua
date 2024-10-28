@@ -4,6 +4,7 @@ local GRAVITY = 0.2--0.2
 local FASTFALL = 10
 local SLOWFALL = 5
 local ORIGIN_OFFSET = 16
+local TIME_TO_RELEASE = 4
 
 local function player(c,start_x,start_y,p)  
   local public = {}
@@ -13,6 +14,8 @@ local function player(c,start_x,start_y,p)
   local class, x, y = c, start_x, start_y
   local hspeed, vspeed = 0, 0
   local jumpRelease = false
+  local jumpTimer = 0 
+    -- if you JUST jumped, but also let go of the button, don't decelerate immediately
   local maxFallSpeed = FASTFALL
   local grounded = true
   
@@ -46,17 +49,22 @@ local function player(c,start_x,start_y,p)
       if kb.jumpPressed() then
         vspeed = -JUMP
         jumpRelease = false
+        jumpTimer = TIME_TO_RELEASE
       end
     else  
       maxFallSpeed = SLOWFALL
       if (not kb.jumpHeld()) or
         (jumpRelease and vspeed < 0) then
         jumpRelease = true
-        if vspeed < -GRAVITY then
-          vspeed = vspeed + 0.5
+        if jumpTimer > 0 then 
+          jumpTimer = jumpTimer - 1
+        else
+          if vspeed < -GRAVITY then
+            vspeed = vspeed + 0.5
+          end
+          maxFallSpeed = FASTFALL
+          vspeed = vspeed + (GRAVITY / 2)
         end
-        maxFallSpeed = FASTFALL
-        vspeed = vspeed + (GRAVITY / 2)
       end
       vspeed = vspeed + GRAVITY
       if vspeed > maxFallSpeed then
@@ -111,11 +119,12 @@ local function player(c,start_x,start_y,p)
     p.changeSprite(image,spr)
   end
   
-  function enemyCollision()
+  local function enemyCollision()
     if(p.checkCollision(hitbox.x,hitbox.y,
-      hitbox.width,hitbox.height,nil,true,true)) then
-      vspeed = -JUMP
+      hitbox.width,hitbox.height,nil,true,true,nil,true)) then
+      vspeed = -JUMP-1
       y = y + vspeed
+      jumpTimer = TIME_TO_RELEASE
       if kb.jumpHeld() then
         jumpRelease = false
       end

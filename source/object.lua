@@ -8,19 +8,30 @@ local new = require("source.class._define")
 
 local p = {} -- parent functions to pass to child closures as needed
 
+local function destroyObject(o)
+  table.remove(objectTable,o)
+end
+
+local function newObject(c,x,y)
+  local obj = {}
+  obj = new[c](c,x,y,p)
+  return obj
+end
+
 function p.checkObjects(f)
   -- perform a passed function on all objects 
   -- immediately return true if any f(obj) returns true
   for i,obj in ipairs(objectTable) do
     if f(obj) then
-      return true
+      return i
     end
   end
   return nil
 end
 
 function p.checkCollision(check_x,check_y,checkWidth,checkHeight,
-  solidOnly,enemyOnly,floorOnly,ceilOnly)
+  solidOnly,enemyOnly,floorOnly,ceilOnly,destroy)
+  local returnValue  
 
   local function f(obj) 
     local collision = false
@@ -37,7 +48,17 @@ function p.checkCollision(check_x,check_y,checkWidth,checkHeight,
     return collision 
   end 
   
-  return p.checkObjects(f)
+  returnValue = p.checkObjects(f)
+  if returnValue then
+    if destroy then
+      destroyObject(returnValue)
+    end
+    returnValue = true
+  else
+    returnValue = false
+  end
+  
+  return returnValue
 end
 
 function p.updateFrame(image) 
@@ -70,12 +91,6 @@ local function getID()
   itrID = itrID + 1
   
   return returnID
-end
-
-local function newObject(c,x,y)
-  local obj = {}
-  obj = new[c](c,x,y,p)
-  return obj
 end
 
 function object.load(OBJECTDATA)
