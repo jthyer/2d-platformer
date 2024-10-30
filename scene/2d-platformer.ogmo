@@ -194,6 +194,44 @@
       "nodeGhost": true,
       "tags": ["object"],
       "values": []
+    },
+    {
+      "exportID": "29574853",
+      "name": "flag",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["object"],
+      "values": [],
+      "texture": "../image/spr_flag.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAgElEQVRYR+2UQQ6AMAgE4bM8is9i1JBUomlLUS/bO93pkC5T8piRtaPMxJmrhodiYAwrB+gFlgPMBpYBrAY7SHoFvwP4C1ZB0gaevs4sUDlABOsBvQ5wD7TXyNlHnwM4kIgcBKo6XGqXBs3UZzsDABiAARiAARiAARiAARhYNbAB6sZ3IULbapsAAAAASUVORK5CYIIA"
     }
   ],
   "tilesets": [

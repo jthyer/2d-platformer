@@ -17,6 +17,8 @@ asset.sprite.jellyfishMove = { image = love.graphics.newImage("image/spr_jellyfi
 asset.sprite.jellyfishShoot = { image = love.graphics.newImage("image/spr_jellyfishShoot.png"), frameCount = 1, frameSpeed = 0 }
 asset.sprite.jellyfishStill = { image = love.graphics.newImage("image/spr_jellyfishStill.png"), frameCount = 1, frameSpeed = 0 }
 
+asset.sprite.flag = { image = love.graphics.newImage("image/spr_flag.png"), frameCount = 1, frameSpeed = 0 }
+
 asset.sprite.spike = { image = love.graphics.newImage("image/tile_wall.png"), frameCount = 1, frameSpeed = 0 }
 
 for i,sprite in pairs(asset.sprite) do

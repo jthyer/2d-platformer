@@ -22,7 +22,6 @@ local function player(c,start_x,start_y,p)
   local hitbox = {}
   hitbox = {x=x+8,y=y+16,width=16,height=16}
   
-  
   local function horMovement()
     if kb.left() then
       hspeed = -SPEED
@@ -39,6 +38,14 @@ local function player(c,start_x,start_y,p)
     else
       x = util.round(x/4) * 4
     end  
+    
+    if x < -4 then 
+      x = -4
+    end
+    
+    if x + 28 > global.WINDOW_WIDTH then 
+      x = global.WINDOW_WIDTH - 28
+    end
   end
   
   local function vertMovement()
@@ -120,7 +127,8 @@ local function player(c,start_x,start_y,p)
   end
   
   local function enemyCollision()
-    if(p.checkCollision(hitbox.x-8,hitbox.y,
+    if(vspeed > 0 and
+      p.checkCollision(hitbox.x-8,hitbox.y,
       hitbox.width+16,hitbox.height,nil,nil,true,nil,true)) then
       vspeed = -JUMP-1
       y = y + vspeed
@@ -134,12 +142,20 @@ local function player(c,start_x,start_y,p)
     end
   end
   
+  local function flagCollision()
+    if p.checkCollision(hitbox.x,hitbox.y,
+      hitbox.width,hitbox.height,nil,nil,nil,nil,nil,true) then
+      global.sceneNext()
+    end
+  end
+  
   function public.update() 
     horMovement()
     vertMovement()
     updateHitbox()
     updateSprite()
     enemyCollision()
+    flagCollision()
     p.updateFrame(image)
   end
   

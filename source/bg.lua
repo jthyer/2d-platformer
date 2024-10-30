@@ -44,7 +44,7 @@ function private.setCanvas(BGDATA)
   for i,v in ipairs(BGDATA) do
     for j,v2 in ipairs(v) do
       if v2 ~= -1 then
-       -- love.graphics.draw(tileset,quads[v2+1],(j-1)*dim,(i-1)*dim)
+        love.graphics.draw(tileset,quads[v2+1],(j-1)*dim,(i-1)*dim)
       end
     end
   end 

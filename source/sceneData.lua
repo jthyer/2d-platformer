@@ -2,7 +2,7 @@ local sceneData = {}
 local private = {}
 local json = require("library.json")
 
-local NUMSCENES = 1
+local NUMSCENES = 4
 local TILEWIDTH = global.WINDOW_WIDTH / global.TILE_DIMENSION
 local TILEHEIGHT = global.WINDOW_HEIGHT / global.TILE_DIMENSION
 

@@ -30,13 +30,13 @@ function p.checkObjects(f)
 end
 
 function p.checkCollision(check_x,check_y,checkWidth,checkHeight,
-  solidOnly,enemyOnly,floorOnly,ceilOnly,destroy)
+  solidOnly,enemyOnly,floorOnly,ceilOnly,destroy,flag)
   local returnValue  
 
   local function f(obj) 
     local collision = false
     if (solidOnly and obj.solid) or (enemyOnly and obj.enemy) or
-      (destroy and obj.bounce) then
+      (destroy and obj.bounce) or (flag and obj.win) then
       local x, y, w, h = obj.hitbox().x, obj.hitbox().y,
         obj.hitbox().width, obj.hitbox().height
       if (floorOnly == nil or check_y <= y) and

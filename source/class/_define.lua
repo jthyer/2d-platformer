@@ -6,5 +6,6 @@ class.jellyfish = require("source.class.jellyfish")--require("source.class.jelly
 class.wall = require("source.class.wall")
 class.spike = require("source.class.spike")
 class.player = require("source.class.player")
+class.flag = require("source.class.flag")
 
 return class
