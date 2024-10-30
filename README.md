@@ -1,23 +1,28 @@
-# 2d-platformer
-Basic extensible 2d platformer engine in Love2D and Ogmo.
+# Regrab City
 
-Done:
-- Loading tiles and objects via Ogmo, drawing them to screen.
-- Loading multiple scenes.
-- Handling object logic via closures.
-- Complex player movement with variable jumping.
-- Simple sprite animation for any visible objects.
-- Player can die.
-- Player can bounce off enemies.
+Tiny difficulty platformer by John Thyer (farawaytimes.itch.io)
 
-Player To-Do:
-- Enemies should die when you bounce on them.
-- Player should die when falling in pit.
-- Player still bounces on the ground sometimes. Replace rounding with actual "move to contact" function? Often bounces on one frame jumps.
+Play on Glorious Trainwrecks: 
+  https://www.glorioustrainwrecks.com/node/12444
 
-Misc. To-Do:
-- Spikes. Player should be able to hit spikes and enemies and die.
-- Implement remaining jellyfish and bullets.
-- Very simple title screen, move between stages, very simple ending. Do the title in-engine, like Game Maker.
-- Can still clip into corners. Do looping collision check to make sure player doesn't get stuck?
-- Draw a pretty background.
+Made with Love2d (love2d.org), Piskel (piskelapp.com), 
+  and OGMO Editor (ogmo-editor-3.github.io)
+
+Move with arrow keys, jump with Z or Up, escape to quit
+
+BetterComicSans font by Quinn Davis Type: 
+  fontspace.com/qd-better-comic-sans-font-f41648
+
+---
+
+I made the basic engine for this in March. I kept wanting to come back to it,
+but I got stuck because the main thing I was interested in exploring was having 
+really mean kaizo mario-style regrab jumps. I thought that'd be alienating for
+most players, so I didn't actually care that much about fleshing it out into a 
+"full game", like Jellyfish Archipelago. 
+
+The presentation here is inspired by a bunch of Sylvie's tiny hard platformers, 
+where the game zeroes in on one interesting friction and then immediately ends. 
+I think that's a really neat mode of gamedev, and posting on Glorious 
+Trainwrecks instead of itch (and not having to make a goddam title thumbnail) 
+is helping me feel more free to explore this kind of sketch dev.
